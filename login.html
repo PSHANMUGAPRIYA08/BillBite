@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+</head>
+
+<body style="text-align:center; margin-top:100px; font-family:Arial;">
+
+<h2>Login / Signup</h2>
+
+<input id="email" placeholder="Email"><br><br>
+<input id="password" type="password" placeholder="Password"><br><br>
+
+<button onclick="signup()">Sign Up</button>
+<button onclick="login()">Login</button>
+<button onclick="forgotPassword()">Forgot Password</button>
+
+<script>
+
+// SIGNUP
+function signup() {
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
+
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+
+    // Duplicate check
+    let exists = users.find(u => u.email === email);
+    if (exists) {
+        alert("User already exists!");
+        return;
+    }
+
+    users.push({ email, password });
+    localStorage.setItem("users", JSON.stringify(users));
+
+    alert("Signup successful! Please login.");
+}
+
+// LOGIN
+function login() {
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
+
+    // ADMIN LOGIN
+    if (email === "admin@gmail.com" && password === "1234") {
+        localStorage.setItem("role", "admin");
+        window.location.href = "index.html";
+        return;
+    }
+
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+
+    let user = users.find(u => u.email === email);
+
+    if (!user) {
+        alert("User not found!");
+        return;
+    }
+
+    if (user.password !== password) {
+        alert("Wrong password!");
+        return;
+    }
+
+    localStorage.setItem("role", "user");
+    window.location.href = "index.html";
+}
+
+// FORGOT PASSWORD
+function forgotPassword() {
+    let email = document.getElementById("email").value;
+
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+
+    let user = users.find(u => u.email === email);
+
+    if (!user) {
+        alert("User not found!");
+    } else {
+        alert("Your password: " + user.password);
+    }
+}
+
+</script>
+
+</body>
+</html>

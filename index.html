@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>SmartServe</title>
+<link rel="stylesheet" href="style.css">
+
+<!-- PDF -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+
+<body>
+
+<h1>🍽 SmartServe</h1>
+
+<input type="text" id="search" placeholder="Search food..." onkeyup="searchItem()">
+<p id="notFound" style="display:none;color:red;">Food not available</p>
+
+<button onclick="logout()">Logout</button>
+<button onclick="downloadPDF()">Download Bill</button>
+
+<!-- ADMIN -->
+<div id="adminPanel" style="display:none;">
+    <h3>Admin Panel</h3>
+    <button onclick="countUsers()">Total Users</button>
+</div>
+
+<div id="menu"></div>
+
+<h2>Cart</h2>
+
+<table border="1" width="100%">
+<thead>
+<tr>
+<th>Item</th>
+<th>Qty</th>
+<th>Price</th>
+<th>Remove</th>
+</tr>
+</thead>
+<tbody id="cart"></tbody>
+</table>
+
+<h3>Total: ₹<span id="total">0</span></h3>
+
+<button onclick="payNow()">Pay Now</button>
+<button onclick="clearCart()">Clear Cart</button>
+
+<!-- QR -->
+<div id="qrSection" style="display:none;">
+    <h3>Scan & Pay</h3>
+    <img id="qrImage" width="200">
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
