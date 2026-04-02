@@ -28,7 +28,7 @@ A simple and user-friendly restaurant billing system built using HTML, CSS, and 
 
 ## 📸 Screenshots
 
-(Add your screenshots here later)
+![App Screenshot](screenshot.png)
 
 ---
 
