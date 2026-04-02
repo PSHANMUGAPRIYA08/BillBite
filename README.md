@@ -33,8 +33,8 @@ A simple and user-friendly restaurant billing system built using HTML, CSS, and 
 ---
 
 ## 🌐 Live Demo
+[🚀 View Live Project](https://billbite.netlify.app/login)
 
-billbite.netlify.app
 
 ---
 
